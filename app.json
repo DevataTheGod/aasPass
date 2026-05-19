@@ -45,10 +45,10 @@
       "@react-native-firebase/app",
       "expo-build-properties"
     ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    },
+"experiments": {
+  "typedRoutes": true,
+  "reactCompiler": false
+},
     "extra": {
       "router": {},
       "eas": {
