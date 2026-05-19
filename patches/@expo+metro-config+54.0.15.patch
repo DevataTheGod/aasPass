@@ -1,0 +1,13 @@
+diff --git a/node_modules/@expo/metro-config/build/transform-worker/collect-dependencies.js b/node_modules/@expo/metro-config/build/transform-worker/collect-dependencies.js
+index e9cb15d..dae2b3c 100644
+--- a/node_modules/@expo/metro-config/build/transform-worker/collect-dependencies.js
++++ b/node_modules/@expo/metro-config/build/transform-worker/collect-dependencies.js
+@@ -54,8 +54,6 @@ const crypto = __importStar(require("node:crypto"));
+ const debug = require('debug')('expo:metro:collect-dependencies');
+ const MAGIC_IMPORT_COMMENTS = [
+     '@metro-ignore',
+-    // Add support for Webpack ignore comment which is used in many different React libraries.
+-    'webpackIgnore: true',
+ ];
+ // asserts non-null
+ function nullthrows(x, message) {
