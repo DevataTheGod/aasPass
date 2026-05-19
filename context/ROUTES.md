@@ -12,8 +12,9 @@ Root Stack (_layout.tsx)
 ├── (auth)/                     # Auth flow (unauthenticated users)
 │   ├── _layout.tsx
 │   ├── welcome.tsx             # Welcome / landing screen
-│   ├── sign-in.tsx             # Sign in with phone OTP
-│   └── verify-otp.tsx          # OTP verification screen
+│   ├── auth.tsx                # Combined Sign Up / Sign In with tabs
+│   ├── forgot-password.tsx     # Enter email to receive reset link
+│   └── reset-password.tsx      # Set new password (via deep link)
 │
 ├── (onboarding)/               # Onboarding flow (first-time users)
 │   ├── _layout.tsx
@@ -57,13 +58,14 @@ Root Stack (_layout.tsx)
 
 ## Screen Inventory (MVP)
 
-### Auth Flow (3 screens)
+### Auth Flow (4 screens)
 
 | Screen | Route | Purpose |
 |--------|-------|---------|
 | Welcome | `/(auth)/welcome` | App intro, value prop, "Get Started" CTA |
-| Sign In | `/(auth)/sign-in` | Phone number/email input for OTP |
-| Verify OTP | `/(auth)/verify-otp` | OTP code entry, auto-submit |
+| Auth | `/(auth)/auth` | Combined Sign Up / Sign In with tabs (email + password) |
+| Forgot Password | `/(auth)/forgot-password` | Enter email to receive a password reset link |
+| Reset Password | `/reset-password` | Handles deep link from email, set new password |
 
 ### Onboarding Flow (3 screens)
 

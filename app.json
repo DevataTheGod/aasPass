@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "AasPaas",
-    "slug": "AasPaas",
-    "version": "1.0.0",
+    "slug": "asspass",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "aaspaas",
@@ -12,6 +12,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.braynixstudios.asspass",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -39,11 +41,20 @@
           }
         }
       ],
-      "@sentry/react-native"
+      "@sentry/react-native",
+      "@react-native-firebase/app",
+      "expo-build-properties"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4f2e6a43-485e-4532-a499-9a0c391ecd6c"
+      }
+    },
+    "owner": "devata2231"
   }
 }

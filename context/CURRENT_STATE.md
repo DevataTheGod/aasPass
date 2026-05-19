@@ -1,6 +1,6 @@
 # Current State
 
-> Last updated: 2025-06-08
+> Last updated: 2025-06-18
 
 ## Project Summary
 
@@ -9,8 +9,8 @@ AasPaas — **College Beta** ready for 100 test users in a single college. Built
 ## What's Built
 
 ### Screens
-- **Welcome / Auth** — Phone OTP sign-in via Supabase Auth
-- **Onboarding** — College selection (Mumbai colleges), profile setup
+- **Welcome / Auth** — Combined Sign Up / Sign In with tabs (email + password), Forgot Password, Reset Password
+- **Onboarding** — College selection, profile setup
 - **Feed** — Post list with pull-to-refresh, category filtering (Sports, Food, Study, Help, Event, General)
 - **Create Post** — Modal with text + category picker
 - **Post Detail + Comments** — View post, write comments
@@ -23,7 +23,7 @@ AasPaas — **College Beta** ready for 100 test users in a single college. Built
 | Framework | Expo SDK 54 |
 | Navigation | Expo Router 6 (file-based) |
 | Language | TypeScript 5.9 |
-| Auth | Supabase Auth (phone OTP) |
+| Auth | Supabase Auth (email + password) |
 | Backend | Supabase (not yet configured) |
 | State | Zustand (app state), TanStack Query (server) |
 | UI | React Native 0.81.5, Reanimated 4 |
@@ -32,7 +32,7 @@ AasPaas — **College Beta** ready for 100 test users in a single college. Built
 ```
 app/
   _layout.tsx          ← Root layout + auth guard
-  (auth)/              ← Welcome, Sign-in, Verify OTP
+  (auth)/              ← Welcome, Auth (Sign Up/In), Forgot Password, Reset Password
   (onboarding)/        ← College select, Profile setup
   (tabs)/              ← Feed, Inbox, Profile
   (modals)/            ← Create Post

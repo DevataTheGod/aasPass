@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { Colors } from '@/constants/theme';
 import { useAuth } from '@/providers/auth-provider';
 import { useAppStore } from '@/store/app-store';
 import { supabase } from '@/lib/supabase';
+import { trackLogout, resetAnalytics } from '@/lib/analytics';
 import type { Profile } from '@/types';
 
 export default function ProfileScreen() {
@@ -16,21 +17,37 @@ export default function ProfileScreen() {
   const selectedCollege = useAppStore((s) => s.selectedCollege);
   const reset = useAppStore((s) => s.reset);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
+    setLoading(true);
     supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)
       .single()
-      .then(({ data }) => setProfile(data));
+      .then(({ data }) => {
+        setProfile(data);
+        setLoading(false);
+      });
   }, [user]);
 
   async function handleLogout() {
+    // Track logout BEFORE reset so the event is associated with the current user
+    trackLogout();
+    await resetAnalytics();
     reset();
     await supabase.auth.signOut();
     router.replace('/(auth)/welcome');
+  }
+
+  if (loading) {
+    return (
+      <View style={[styles.container, styles.centered, { backgroundColor: colors.background }]}>
+        <ActivityIndicator size="large" color={colors.tint} />
+      </View>
+    );
   }
 
   return (
@@ -86,6 +103,7 @@ function StatItem({ label, value }: { label: string; value: string }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24 },
+  centered: { alignItems: 'center', justifyContent: 'center' },
   top: { alignItems: 'center', paddingTop: 40, marginBottom: 24 },
   avatar: { width: 80, height: 80, borderRadius: 40, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
   avatarText: { fontSize: 32, fontWeight: '700' },

@@ -39,6 +39,10 @@ yarn-error.*
 
 app-example
 
+# Firebase / Google Services (keep out of git — project-specific secrets)
+google-services.json
+GoogleService-Info.plist
+
 # generated native folders
 /ios
 /android

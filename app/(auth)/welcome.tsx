@@ -34,21 +34,14 @@ export default function WelcomeScreen() {
       <View style={styles.bottom}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: colors.tint }]}
-          onPress={() => router.push('/(auth)/email-sign-up')}
+          onPress={() => router.push({ pathname: '/(auth)/auth', params: { tab: 'sign-up' } })}
         >
           <Text style={styles.buttonText}>Continue with Email</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.buttonOutline, { borderColor: colors.tint }]}
-          onPress={() => router.push('/(auth)/phone-sign-in')}
-        >
-          <Text style={[styles.buttonOutlineText, { color: colors.tint }]}>Continue with Phone</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
           style={styles.signInLink}
-          onPress={() => router.push('/(auth)/email-sign-in')}
+          onPress={() => router.push({ pathname: '/(auth)/auth', params: { tab: 'sign-in' } })}
         >
           <Text style={[styles.signInText, { color: colors.icon }]}>
             Already have an account?{' '}
@@ -73,8 +66,6 @@ const styles = StyleSheet.create({
   bottom: { paddingBottom: 40, gap: 12 },
   button: { padding: 16, borderRadius: 12, alignItems: 'center' },
   buttonText: { color: '#fff', fontSize: 17, fontWeight: '600' },
-  buttonOutline: { padding: 16, borderRadius: 12, alignItems: 'center', borderWidth: 1.5 },
-  buttonOutlineText: { fontSize: 17, fontWeight: '600' },
   signInLink: { alignItems: 'center', paddingVertical: 8 },
   signInText: { fontSize: 14 },
 });
