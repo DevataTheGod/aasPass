@@ -45,7 +45,10 @@
       "@react-native-firebase/app",
       "expo-build-properties"
     ],
-"experiments": {
+  "install": {
+      "exclude": ["@sentry/react-native"]
+    },
+    "experiments": {
   "typedRoutes": true,
   "reactCompiler": false
 },
